@@ -3,6 +3,7 @@ from tkinter.ttk import *
 import os
 from art import *
 import webbrowser
+from platform import system
 
 # FRAME
 
@@ -25,24 +26,45 @@ tprint("\nLBRY TOOLS","rnd-medium")
 
 # FUNCTIONS
 
+platformD = system()
+
 def list_tips ():
-    os.system('cmd /c "lbrynet txo spend --type=support --is_not_my_input --preview --include_full_tx"')
+    if platformD == 'Windows':
+        os.system('cmd /c "lbrynet txo spend --type=support --is_not_my_input --preview --include_full_tx"')
+    else:
+        os.system('./lbrynet txo spend --type=support --is_not_my_input --preview --include_full_tx')
 def unlock_tips():
     input('It will Reduce Your Claims Discoverability, enter to Continue')
-    os.system('cmd /c "lbrynet txo spend --type=support --is_not_my_input"')
-    os.system('python matrix.py')
+    if platformD == 'Windows':
+        os.system('cmd /c "lbrynet txo spend --type=support --is_not_my_input"')
+        os.system('python matrix.py')
+    else:
+        os.system('./lbrynet txo spend --type=support --is_not_my_input')
+        os.system('python3 matrix.py')
 def vanity():
-    os.system('cmd /c "python vanity.py"') 
+    if platformD == 'Windows':
+        os.system('cmd /c "python vanity.py"')
+    else:
+        os.system('python3 vanity.py') 
 def seed():
-    os.system('cmd /c "python seed.py"') 
+    if platformD == 'Windows':
+        os.system('cmd /c "python seed.py"') 
+    else:
+        os.system('python3 seed.py') 
 def ratio():
-    os.system('cmd /c "python ratio.py"')
+    if platformD == 'Windows':
+        os.system('cmd /c "python ratio.py"')
+    else:
+        os.system('python3 ratio.py')
 def lbryup():
-    os.system('python LBRYup.py')
+    if platformD == 'Windows':
+        os.system('python LBRYup.py')
+    else:
+        os.system('python3 LBRYup.py')
 def lbrynomics():
     webbrowser.open_new(r"http://www.lbrynomics.com")
 def coindodo():
-    webbrowser.open_new(r"https://coindodo.io/")
+    webbrowser.open_new(r"https://coindodo.io/lbry")
 def whalebot():
     webbrowser.open_new(r"https://lbrywhale.herokuapp.com/")
 def foundation():
