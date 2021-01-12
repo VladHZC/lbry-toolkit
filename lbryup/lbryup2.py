@@ -39,7 +39,7 @@ tags_entry.pack()
 channel_entry = Entry(root , width = 40)
 channel_entry.insert(0, 'Insert Channel Claim ID')
 channel_entry.pack()
-
+channel_id=""
 def Click():
     global video_url
     video_url = str(video_entry.get())
