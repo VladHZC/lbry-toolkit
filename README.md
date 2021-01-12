@@ -11,13 +11,13 @@
 ![](https://i.ibb.co/1b0njKf/unknown.png)
 
 Features :
-- 1.
-- 2.
-- 3. by Brendon
-- 4. by Brendon 
-- 5. by Brendon 
-- 6.
-- 7. 
+- 1. List all Tips
+- 2. Unlock all Tips
+- 3. Vanity Names by Brendon
+- 4. Lbryseeds by Brendon and me 
+- 5. Seeding ratio by Brendon 
+- 6. Lbry Uploader 
+- 7. Useful Websites for LBRY performance
 
 Recommended Sites:
 
