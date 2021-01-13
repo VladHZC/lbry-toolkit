@@ -1,5 +1,7 @@
 # lbry-toolkit
 
+# 0) Use along with LBRY app
+
 # 1) Install [Python 3.9](https://www.python.org/) and make sure you add it to PATH when installing as bellow: 
 
 ![](https://tubemint.com/wp-content/uploads/2020/10/set-python-3-9-to-system-path.png)
@@ -16,7 +18,7 @@ Features :
 - 3. Vanity Names by Brendon
 - 4. Lbryseeds by Brendon and me 
 - 5. Seeding ratio by Brendon 
-- 6. Lbry Uploader 
+- 6. Lbry Uploader (not ready)
 - 7. Useful Websites for LBRY performance
 
 Recommended Sites:
