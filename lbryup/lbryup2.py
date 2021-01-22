@@ -31,22 +31,24 @@ thumb_entry.pack()
 bid_entry = Entry(root , width=40 )
 bid_entry.insert(0, "Enter Bid Value")
 bid_entry.pack()
+bid=""
 # Tag selection
 tags_entry = Entry(root , width =40)
 tags_entry.insert(0 ,'Insert TAGS (Use comma to separate tags)')
 tags_entry.pack()
+tags=[]
 # ChannelId Entry
 channel_entry = Entry(root , width = 40)
 channel_entry.insert(0, 'Insert Channel Claim ID')
 channel_entry.pack()
-channel_id=""
+channel_id=r""
+
 def Click():
     global video_url
     video_url = str(video_entry.get())
-    Label(root, text=video_url).pack()
     global name 
     name =  str(name_entry.get())
-    Label(root, text = name).pack()
+    Label(root, text = "lbry://@yourchannel/" + name).pack()
     global title
     title = str(title_entry.get())
     global thumbnail_url
@@ -54,41 +56,37 @@ def Click():
     global bid
     bid = str(bid_entry.get())
     global tags
-    tags = tags_entry.split(',')
+    global tags_entry    
+    tags_str = str(tags_entry.get())
+    tags= tags_str.split(',')
     global channel_id
     channel_id = str(channel_entry.get())
-
-win = Button(root, text="OK", command = Click)
-
-win.pack()
-global download_path
+    
 download_path = os.getcwd()
-global file_path
-file_path = os.path.join(download_path, "video.mkv")
+file_path = ""
 audio_answer=""
 audio_= IntVar()
 def audio():
     if audio_.get() == 1:
         global audio_answer
         audio_answer = "--extract-audio --audio-format mp3"
-        Label(root, text=audio_answer).pack()
+        global download_path
+        global file_path
         file_path = os.path.join(download_path, "video.mp3")
-        Label(root, text=file_path).pack()
+        print(file_path)
     else:
         audio_answer = ""
-        Label(root, text=audio_answer).pack()
         file_path = os.path.join(download_path, "video.mp4")
-        Label(root, text=file_path).pack()
+        print(file_path)
+audio()
 audiobtn =Checkbutton(root, text="audio only", variable =audio_, command = audio)
 audiobtn.pack()
-        
+win = Button(root, text="OK", command = Click)
+win.pack()        
 def download(): 
 
-    download_path = os.getcwd()
     stringa = f'youtube-dl -22 {video_url} -o "video.%(ext)s" {audio_answer}'
-    os.system(stringa)
-    channel_account_id = channel_id                 
-    
+    os.system(stringa) 
     return_stream_create = requests.post("http://localhost:5279",
                     json={"method": "stream_create",
                         "params": {"name": name,
