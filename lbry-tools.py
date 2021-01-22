@@ -6,6 +6,7 @@ import webbrowser
 from platform import system
 import json 
 import pprint
+import tkinter.messagebox
 
 # FRAME
 
@@ -40,7 +41,8 @@ def list_tips ():
     else:
         os.system('./lbrynet txo spend --type=support --is_not_my_input --preview --include_full_tx')
 def unlock_tips():
-    input('It will Reduce Your Claims Discoverability, enter to Continue')
+    tkinter.messagebox.showinfo('Be Careful', 'It will Reduce Your Claims Discoverability, enter to Continue')
+    
     if platformD == 'Windows':
         os.system('cmd /c "lbrynet txo spend --type=support --is_not_my_input"')
         os.system('python matrix.py')
@@ -67,10 +69,7 @@ def lbryup():
         os.system('cd lbryup && python lbryup2.py')
         
     else:
-        os.system('cd lbryup')
-        os.system('python3 lbryup2.py')
-        os.system('cd..')
-
+        os.system('cd lbryup && python3 lbryup2.py')      
 def lbrynomics():
     webbrowser.open_new(r"http://www.lbrynomics.com")
 def coindodo():
@@ -81,7 +80,15 @@ def foundation():
     webbrowser.open_new(r"http://chat.lbry.org")
 def lbctoday():
     webbrowser.open_new(r"https://chrome.google.com/webstore/detail/lbc-today/ealgadmpgaefckfpclemccenfkjihedn")
-
+def watch_on_lbry():
+    webbrowser.open_new(r"https://chrome.google.com/webstore/search/whatch%20on%20lbry%20")
+def dump():
+    if platformD == 'Windows':
+        os.system('cd lbrydump && cmd /c start LBRYMeta-Win-x64')
+        
+    else:
+        os.system('cd lbrydump && start LBRYMeta-Linux-x64')   
+    
 # BUTTONS
 style = Style() 
 style.configure('W.TButton', font =
@@ -98,10 +105,14 @@ button4 = Button(frame, text = "Seeding Ratio",width = 560, command = ratio)
 button4.pack(padx = 3, pady = 3)
 button5 = Button(frame, text = "Seed Channels",width = 560, command = seed)
 button5.pack(padx = 3, pady = 3)
-button6 = Button(frame, text = "LBRY Uploader (Not working yet)",width = 560, command = lbryup)
+button6 = Button(frame, text = "LBRY Uploader",width = 560, command = lbryup)
 button6.pack(padx = 3, pady = 3)
 button11 = Button(frame,text="LBC today", width=560 , command = lbctoday)
 button11.pack(padx=3, pady =3)
+button12 = Button(frame,text="Watch on LBRY", width=560 , command = watch_on_lbry)
+button12.pack(padx=3, pady =3)
+button13 = Button(frame,text="LBRY Dump", width=560 , command = dump)
+button13.pack(padx=3, pady =3)
 label = Label(frame, text = "Great Websites and Communities", foreground = 'green')
 label.pack()
 button7 = Button(frame, text = "LBRYnomics",width = 560, command = lbrynomics)
